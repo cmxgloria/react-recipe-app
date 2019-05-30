@@ -46,6 +46,22 @@ when there are too many words to display two rows for the recipe.title, we can u
 eg
 <h5>{recipe.title.length < 20 ? `${recipe.title}` : `${recipe.title.substring(0, 25)}...`}</h5>
 
+````
+when you click then 'go home' button,  with underneath function, it will go home with last record pictures in the home page instead of the home page without any pictures to display
+
+```
+componentDidMount = () => {
+    const json = localStorage.getItem("recipes");
+    const recipes = JSON.parse(json);
+    this.setState({ recipes });
+  }
+  componentDidUpdate = () => {
+    const recipes = JSON.stringify(this.state.recipes);
+    localStorage.setItem("recipes", recipes);
+  }
+  ```
+
+
 
 
 
