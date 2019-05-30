@@ -1,9 +1,9 @@
 import React from "react";
-
-const Recipe = () => (
-  <div>
-    Recipe
-    Component!
-  </div>
-);
+class extends Recipe React.Component {
+  render() {
+    return (
+      <div>Recipe Component!</div>
+    );
+  }
+}
 export default Recipe;
