@@ -23,6 +23,8 @@ class Recipe extends React.Component {
           <h4 className="active-recipe__publisher">
             Publisher:<span>{recipe.publisher}</span>
           </h4>
+          <p className="active-recipe__website">
+            Website:<span><a href={recipe.publisher_url}>{recipe.publisher_url}</a></span></p>
         </div>
       </div >
     );
