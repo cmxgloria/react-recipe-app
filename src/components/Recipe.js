@@ -2,8 +2,11 @@ import React from "react";
 class Recipe extends React.Component {
   render() {
     return (
-      <div>Recipe Component!</div>
+      console.log(this.props);
+    <div>
+      Recipe Component!
+    </div>
     );
   }
-}
+};
 export default Recipe;
