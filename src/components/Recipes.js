@@ -10,7 +10,11 @@ const Recipes = props => (
               <h5>
                 {recipe.title.length < 20 ? `${recipe.title}` : `${recipe.title.substring(0, 25)}...`}
               </h5>
-              <p className="recipes__subtitle">Publisher:<span>{recipe.publisher}</span></p></div>
+              <p className="recipes__subtitle">Publisher:<span>{recipe.publisher}
+              </span>
+              </p>
+            </div>
+            <button className="recipe_button">View Recipe</button>
           </div>
         </div>
         );
