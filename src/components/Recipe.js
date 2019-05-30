@@ -6,3 +6,4 @@ const Recipe = () => (
     Component!
   </div>
 );
+export default Recipe;
