@@ -3,6 +3,6 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import App from "../App";
 const Router = () => (
   <BrowserRouter>
-    <Router path="/" component={App} />
+    <Route path="/" component={App} />
   </BrowserRouter>
 );
