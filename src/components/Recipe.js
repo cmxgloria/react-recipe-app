@@ -1,11 +1,12 @@
 import React from "react";
+
 class Recipe extends React.Component {
   render() {
+    console.log(this.props);
     return (
-      console.log(this.props);
-    <div>
-      Recipe Component!
-    </div>
+      < div >
+        Recipe Component!
+    </div >
     );
   }
 };
