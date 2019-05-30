@@ -8,6 +8,7 @@ const Recipes = props => (
             <img src={recipe.image_url} alt={recipe.title} />
             <div className="recipe__text">
               <h5 className="recipes__title">{recipe.title}</h5>
+              {recipe.title.length < 20 ? `${recipe.title}` : `${recipe.title.substring(0, 25)}...`}
               <p className="recipes__subtitle">Publisher:<span>{recipe.publisher}</span></p></div>
           </div>
         </div>
