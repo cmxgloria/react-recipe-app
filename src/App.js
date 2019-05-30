@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import Form from './components/Form';
+import Recipes from './components/Recipes';
+
 const API_KEY = '92f74e2d208972d83294d191e27b85b3';
-
-
 class App extends Component {
   state = {
     recipes: []
@@ -11,9 +11,9 @@ class App extends Component {
   getRecipe = async (e) => {
     const recipeName = e.target.elements.recipeName.value;
     e.preventDefault();
-    const api_call = await fetch(`https://www.food2fork.com/api/search?key=${API_KEY}&q=shredded%20chicken&count=10`)
+    const api_call = await fetch(`https://www.food2fork.com/api/search?key=${API_KEY}&q=${recipeName}&count=10`)
     const data = await api_call.json();
-    this.setState({ recipes: data });
+    this.setState({ recipes: data.recipes });
     console.log(this.state.recipes);
   }
   render() {
@@ -23,8 +23,8 @@ class App extends Component {
           <h1 className="App-title">Recipe Search</h1>
         </header>
         <Form getRecipe={this.getRecipe} />
-      </div>
-    );
+        <Recipes recipes={this.state.recipes} />
+      </div>);
   }
 }
 
