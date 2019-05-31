@@ -105,6 +105,114 @@ class App extends Component {
 
 export default App;
 ```
+Form.js
+```
+import React from 'react';
 
 
+const Form = props => (
+  <form onSubmit={props.getRecipe} style={{ marginBottom: "2rem" }}>
+    <input className="form__input" type="text" name="recipeName" />
+    <button className="form__button">Search</button>
+  </form >
+)
 
+export default Form;
+```
+Recipes.js
+```
+import React from 'react';
+import { Link } from 'react-router-dom';
+const Recipes = props => (
+  <div className="container">
+    <div className="row">
+      {props.recipes.map((recipe) => {
+        return (<div key={recipe.title} className="col-md-4" style={{ marginBottom: "2rem" }}>
+          <div className="recipe__box">
+            <img src={recipe.image_url} alt={recipe.title} />
+            <div className="recipe__text">
+              <h5>
+                {recipe.title.length < 20 ? `${recipe.title}` : `${recipe.title.substring(0, 25)}...`}
+              </h5>
+              <p className="recipes__subtitle">Publisher:<span>{recipe.publisher}
+              </span>
+              </p>
+            </div>
+            <button className="recipe_button">
+              <Link to={{
+                pathname: `./recipe/${recipe.recipe_id}`,
+                state: { recipe: recipe.title }
+              }}>
+                View Recipe
+              </Link>
+            </button>
+          </div>
+        </div>
+        );
+      })}
+    </div>
+  </div>
+);
+export default Recipes;
+```
+Recipe.js
+```
+import React from "react";
+import { Link } from "react-router-dom";
+const API_KEY = '05ad831c39d59352631d2c02bb87dc47';
+class Recipe extends React.Component {
+  state = {
+    activeRecipe: []
+  }
+  componentDidMount = async () => {
+    const title = this.props.location.state.recipe;
+    const req = await fetch(`https://www.food2fork.com/api/search?key=${API_KEY}&q=${title}`)
+    const res = await req.json();
+    this.setState({ activeRecipe: res.recipes[0] });
+    console.log(this.state.activeRecipe);
+
+  }
+  render() {
+    const recipe = this.state.activeRecipe;
+    console.log(this.props);
+    return (
+      < div className="container">
+        {
+          this.state.activeRecipe.length !== 0 &&
+          <div className="active-recipe">
+            <img className="active-recipe__img" src={recipe.image_url} alt={recipe.title} />
+            <h3 className="active-recipe__title">{recipe.title}</h3>
+            <h4 className="active-recipe__publisher">
+              Publisher:<span>{recipe.publisher}</span>
+            </h4>
+            <p className="active-recipe__website">
+              Website:<span><a href={recipe.publisher_url}>{recipe.publisher_url}</a>
+              </span>
+            </p>
+            <button className="active-recipe__button"><Link to="/">Go Home</Link></button>
+          </div>
+        }
+      </div >
+    );
+  }
+};
+export default Recipe;
+
+```
+Router.js
+```
+import React from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import App from "../App";
+import Recipe from "./Recipe";
+
+const Router = () => (
+  <BrowserRouter>
+    <Switch>
+      <Route path="/" component={App} exact />
+      <Route path="/recipe/:id" component={Recipe} />
+    </Switch>
+  </BrowserRouter>
+);
+export default Router;
+```
