@@ -5,7 +5,7 @@ const Recipes = props => (
     <div className="row">
       {props.recipes.map((recipe) => {
         return (<div key={recipe.title} className="col-md-4" style={{ marginBottom: "2rem" }}>
-          <div className="recipe__box">
+          <div className="recipe__box-img">
             <img src={recipe.image_url} alt={recipe.title} />
             <div className="recipe__text">
               <h5 className="recipe__title">
