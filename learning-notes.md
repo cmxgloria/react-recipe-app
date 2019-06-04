@@ -1,9 +1,10 @@
-``````````
+
 Optional: Instructions for following along locally using your preferred text editor
 This setup requires more work but allows you to complete the tutorial using an editor of your choice. Here are the steps to follow:
 
 Make sure you have a recent version of Node.js installed.
 Follow the installation instructions for Create React App to make a new project.
+
 ```npx create-react-app my-app```
 Delete all files in the src/ folder of the new project
 Note:
@@ -34,11 +35,11 @@ Now if you run npm start in the project folder and open http://localhost:3000 in
 
 We recommend following these instructions to configure syntax highlighting for your editor.
 
-``````````
+```
 https://cors-anywhere.herokuapp.com
 This API enables cross-origin requests to anywhere, like some public API doesnt allow to be used in the local host then we can use this website to solve out.
+```
 
-````````
 https://explainshell.com/explain?cmd=rm+-rf
 
 ````
